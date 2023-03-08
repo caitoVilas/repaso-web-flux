@@ -28,8 +28,11 @@ public class JwtAuthenticationManager implements ReactiveAuthenticationManager {
                 .map(auth -> jwtProvider.getClaims(auth.getCredentials().toString()))
                 .log()
                 .onErrorResume(e -> Mono.error(new CustomException(HttpStatus.UNAUTHORIZED, "no autorizado")))
-                .map(claims -> new UsernamePasswordAuthenticationToken(claims.getSubject(),null,
-                        Stream.of(claims.get("roles")).map(role -> (List<Map<String, String>>) role)
+                .map(claims -> new UsernamePasswordAuthenticationToken(
+                        claims.getSubject()
+                        ,null,
+                        Stream.of(claims.get("roles"))
+                                .map(role -> (List<Map<String, String>>) role)
                                 .flatMap(role -> role.stream()
                                         .map(r -> r.get("authoritiy"))
                                         .map(SimpleGrantedAuthority::new))

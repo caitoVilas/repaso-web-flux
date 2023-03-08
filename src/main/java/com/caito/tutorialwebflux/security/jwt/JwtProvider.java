@@ -20,8 +20,8 @@ import java.util.Date;
 public class JwtProvider {
     @Value("${jwt.secret")
     private String secret;
-    @Value("${jwt.expiration")
-    private Integer expiration;
+    @Value("${jwt.expiration}")
+    private int expiration;
 
     public Key getKey(String secret){
         byte[] secretByte = Decoders.BASE64.decode(secret);
