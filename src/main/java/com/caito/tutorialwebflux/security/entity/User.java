@@ -1,5 +1,6 @@
 package com.caito.tutorialwebflux.security.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
@@ -17,6 +18,7 @@ public class User implements UserDetails {
     private Integer id;
     private String username;
     private String email;
+    @JsonIgnore
     private String password;
     private String roles;
 
@@ -58,4 +60,23 @@ public class User implements UserDetails {
         return true;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
 }
