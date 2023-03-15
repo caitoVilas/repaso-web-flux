@@ -1,1 +1,3 @@
 CREATE TABLE IF NOT EXISTS `webflux_tutorial`.`products` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `name` VARCHAR(10) NOT NULL , `price` FLOAT NOT NULL , PRIMARY KEY (`id`), UNIQUE `name_unique` (`name`)) ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `webflux_tutorial`.`users` ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT , `username` VARCHAR(15) NOT NULL , `email` VARCHAR(25) NOT NULL ,`password` VARCHAR(70) NOT NULL, `roles` VARCHAR(15) NOT NULL,  PRIMARY KEY (`id`), UNIQUE `username_unique` (`username`), UNIQUE `email_unique` (`email`)) ENGINE = InnoDB;
